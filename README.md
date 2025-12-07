@@ -2,6 +2,12 @@
 
 An intelligent interior design tool that leverages Google's Gemini 3 Pro model to identify, count, and localize Furniture, Fixtures, and Equipment (FF&E) in uploaded photos.
 
+## Screenshot
+
+![FF&E Analyzer AI Demo](assets/screenshot.png)
+
+*Example analysis showing detected FF&E items in an interior scene, with bounding boxes highlighting furniture, artwork, and decor elements.*
+
 ## Features
 
 - **AI Object Detection**: Automatically identifies furniture, lighting, and decor items in interior images.
