@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { ImageUploader } from './components/ImageUploader';
 import { ResultCard } from './components/ResultCard';
+import { AuthModal } from './components/AuthModal';
 import { AnalysisState, DetectedObject } from './types';
 import { analyzeImageForFFE } from './services/geminiService';
 
@@ -13,7 +14,12 @@ const App: React.FC = () => {
     imagePreview: null,
   });
 
-  const handleImageSelected = async (base64: string, mimeType: string) => {
+  // Auth State
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [pendingImage, setPendingImage] = useState<{ base64: string; mimeType: string } | null>(null);
+
+  const startAnalysis = async (base64: string, mimeType: string) => {
     // Set preview immediately
     const previewUrl = `data:${mimeType};base64,${base64}`;
     
@@ -39,6 +45,29 @@ const App: React.FC = () => {
         error: "We couldn't analyze the furniture in that image properly. Please try again with a clearer photo.",
       }));
     }
+  };
+
+  const handleImageSelected = (base64: string, mimeType: string) => {
+    if (isAuthenticated) {
+      startAnalysis(base64, mimeType);
+    } else {
+      setPendingImage({ base64, mimeType });
+      setShowAuthModal(true);
+    }
+  };
+
+  const handleAuthSuccess = () => {
+    setIsAuthenticated(true);
+    setShowAuthModal(false);
+    if (pendingImage) {
+      startAnalysis(pendingImage.base64, pendingImage.mimeType);
+      setPendingImage(null);
+    }
+  };
+
+  const handleAuthCancel = () => {
+    setShowAuthModal(false);
+    setPendingImage(null);
   };
 
   const handleReset = () => {
@@ -88,6 +117,13 @@ const App: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <Header />
       
+      {/* Auth Modal */}
+      <AuthModal 
+        isOpen={showAuthModal} 
+        onSuccess={handleAuthSuccess} 
+        onCancel={handleAuthCancel} 
+      />
+
       <main className="flex-grow container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         
         {state.status === 'idle' && (
