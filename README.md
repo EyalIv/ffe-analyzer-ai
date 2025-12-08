@@ -1,6 +1,14 @@
 # FF&E Analyzer AI
 
-An intelligent interior design tool that leverages Google's Gemini 3 Pro model to identify, count, and localize Furniture, Fixtures, and Equipment (FF&E) in uploaded photos.
+An intelligent interior design tool that leverages Google's Gemini 2.5 Flash model to identify, count, and localize Furniture, Fixtures, and Equipment (FF&E) in uploaded photos.
+
+## Screenshot
+
+![FF&E Analyzer AI Demo](assets/screenshot.png)
+
+*Example analysis showing detected FF&E items in an interior scene, with bounding boxes highlighting furniture, artwork, and decor elements.*
+
+Photo by [Thai Nguyen Anh](https://unsplash.com/@kyuubei07012008?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/a-couple-of-women-sitting-next-to-each-other-in-a-living-room-qZaf_d--iB4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
 ## Features
 
@@ -14,7 +22,39 @@ An intelligent interior design tool that leverages Google's Gemini 3 Pro model t
 
 - **Frontend**: React 19, TypeScript
 - **Styling**: Tailwind CSS
-- **AI Model**: Google Gemini 3 Pro (via `@google/genai` SDK)
+- **AI Model**: Google Gemini 2.5 Flash (via `@google/genai` SDK)
+
+## Prerequisites
+
+- **Node.js**: v18 or higher
+- **Google Gemini API Key**: Obtain one from [Google AI Studio](https://aistudio.google.com/apikey)
+
+## Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/EyalIv/ffe-analyzer-ai.git
+   cd ffe-analyzer-ai
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up your API key**
+   
+   Create a `.env` file in the root directory:
+   ```env
+   GEMINI_API_KEY=your_api_key_here
+   ```
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser** and navigate to `http://localhost:5173`
 
 ## How It Works
 
@@ -33,3 +73,7 @@ An intelligent interior design tool that leverages Google's Gemini 3 Pro model t
 2.  **Analyze**: Wait for the AI to process the image and identify objects.
 3.  **Review**: Hover over the bounding boxes to see labels, or check the table for full descriptions.
 4.  **Export**: Click "Download Excel Report" to save the data.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
