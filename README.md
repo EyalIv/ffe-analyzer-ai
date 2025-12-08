@@ -1,6 +1,6 @@
 # FF&E Analyzer AI
 
-An intelligent interior design tool that leverages Google's Gemini 2.5 Flash model to identify, count, and localize Furniture, Fixtures, and Equipment (FF&E) in uploaded photos.
+An intelligent interior design tool that leverages Google's Gemini 3 Pro model to identify, count, and localize Furniture, Fixtures, and Equipment (FF&E) in uploaded photos.
 
 ## Screenshot
 
@@ -22,7 +22,7 @@ Photo by [Thai Nguyen Anh](https://unsplash.com/@kyuubei07012008?utm_source=unsp
 
 - **Frontend**: React 19, TypeScript
 - **Styling**: Tailwind CSS
-- **AI Model**: Google Gemini 2.5 Flash (via `@google/genai` SDK)
+- **AI Model**: Google Gemini 3 Pro (via `@google/genai` SDK)
 
 ## Prerequisites
 
