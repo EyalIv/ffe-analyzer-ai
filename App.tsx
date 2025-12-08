@@ -183,7 +183,7 @@ const App: React.FC = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m7.8 16.2-2.9 2.9"/><path d="M6 12H2"/><path d="m7.8 7.8-2.9-2.9"/><circle cx="12" cy="12" r="3"/></svg>
                 </div>
                 <h3 className="font-semibold text-slate-900">Scan FF&E</h3>
-                <p className="text-sm text-slate-500 mt-1">Gemini 2.5 Flash</p>
+                <p className="text-sm text-slate-500 mt-1">Gemini 3 Pro</p>
               </div>
                <div className="p-4 bg-white rounded-xl shadow-sm border border-slate-100">
                 <div className="w-10 h-10 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -290,7 +290,7 @@ const App: React.FC = () => {
       <footer className="border-t border-slate-200 bg-white py-8">
         <div className="container max-w-5xl mx-auto px-4 text-center">
           <p className="text-slate-400 text-sm">
-            &copy; {new Date().getFullYear()} FF&E Analyzer. Built with Gemini API & React.
+            Made with ❤️ by <a href="https://github.com/EyalIv" target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:text-indigo-800 transition-colors">Eyal Ivri</a>
           </p>
         </div>
       </footer>

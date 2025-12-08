@@ -1,5 +1,5 @@
 {
   "name": "FF&E Analyzer AI",
-  "description": "An intelligent interior design tool that identifies, counts, and localizes Furniture, Fixtures, and Equipment (FF&E) in uploaded photos using the advanced Gemini 2.5 Flash model.",
+  "description": "An intelligent interior design tool that identifies, counts, and localizes Furniture, Fixtures, and Equipment (FF&E) in uploaded photos using the advanced Gemini 3 Pro model.",
   "requestFramePermissions": []
 }

@@ -23,7 +23,7 @@ export const Header: React.FC = () => {
           <h1 className="text-xl font-bold text-slate-900 tracking-tight">FF&E<span className="text-indigo-600">Analyzer</span> AI</h1>
         </div>
         <div className="text-sm font-medium text-slate-500">
-          Powered by Gemini 2.5 Flash
+          Powered by Gemini 3 Pro
         </div>
       </div>
     </header>
