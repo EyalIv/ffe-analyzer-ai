@@ -49,7 +49,7 @@ const analysisSchema = {
 export const analyzeImageForFFE = async (base64Image: string, mimeType: string): Promise<FFEAnalysis> => {
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-3-pro-preview",
+      model: "gemini-2.5-flash",
       contents: {
         parts: [
           {
@@ -66,6 +66,7 @@ export const analyzeImageForFFE = async (base64Image: string, mimeType: string):
       config: {
         responseMimeType: "application/json",
         responseSchema: analysisSchema,
+        temperature: 0.4,
         systemInstruction: "You are an expert Interior Designer and FF&E Specialist. Your task is to identify movable objects in a room, list them with detailed descriptions, and provide accurate 2D bounding boxes for visual identification.",
       },
     });
@@ -76,7 +77,13 @@ export const analyzeImageForFFE = async (base64Image: string, mimeType: string):
     }
 
     try {
-      const data = JSON.parse(text) as FFEAnalysis;
+      // Clean up markdown code blocks if present (just in case)
+      const cleanedText = text.replace(/```json/g, '').replace(/```/g, '').trim();
+      const data = JSON.parse(cleanedText) as FFEAnalysis;
+      
+      if (!data.items) {
+        data.items = [];
+      }
       
       // Post-processing to handle duplicate labels (e.g., "Chair 1", "Chair 2")
       const labelCounts: Record<string, number> = {};
@@ -103,12 +110,13 @@ export const analyzeImageForFFE = async (base64Image: string, mimeType: string):
       
       return data;
     } catch (parseError) {
-      console.error("JSON Parse Error:", parseError);
-      throw new Error("Failed to parse analysis results.");
+      console.error("JSON Parse Error:", parseError, "Raw Text:", text);
+      throw new Error("Failed to parse analysis results. The model output was not valid JSON.");
     }
 
-  } catch (error) {
+  } catch (error: any) {
     console.error("Gemini API Error:", error);
-    throw error;
+    // Propagate the specific error message
+    throw new Error(error.message || "Unknown error occurred during analysis.");
   }
 };
